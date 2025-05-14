@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  web:
+  zobottop-web:
     image: hvidigaljr/zobot-top:latest
     networks:
       - portainer
@@ -13,12 +13,12 @@ services:
           - node.role == manager
       labels:
         - traefik.enable=true
-        - traefik.http.routers.zobot-top.rule=Host(`zobot.top`)
-        - traefik.http.routers.zobot-top.entrypoints=websecure
-        - traefik.http.routers.zobot-top.tls.certresolver=letsencryptresolver
-        - traefik.http.services.zobot-top.loadbalancer.server.port=3000
-        - traefik.http.services.zobot-top.loadbalancer.passHostHeader=true
-        - traefik.http.routers.zobot-top.service=zobot-top
+        - traefik.http.routers.zobottop-web.rule=Host(`zobot.top`)
+        - traefik.http.routers.zobottop-web.entrypoints=websecure
+        - traefik.http.routers.zobottop-web.tls.certresolver=letsencryptresolver
+        - traefik.http.services.zobottop-web.loadbalancer.server.port=3000
+        - traefik.http.services.zobottop-web.loadbalancer.passHostHeader=true
+        - traefik.http.routers.zobottop-web.service=zobottop-web
     environment:
       - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
       - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
