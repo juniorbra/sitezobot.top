@@ -13,6 +13,7 @@ const Privacy: React.FC = () => {
           </Link>
           <nav className="nav-links">
             <Link to="/">Voltar ao Início</Link>
+            <a href="https://meu.zobot.top/login" target="_blank" rel="noopener noreferrer" className="nav-login-btn">Login</a>
           </nav>
         </div>
       </header>
