@@ -8,7 +8,9 @@ const Privacy: React.FC = () => {
       {/* Header/Navigation */}
       <header className="header">
         <div className="nav-container">
-          <Link to="/" className="logo">zobot.top</Link>
+          <Link to="/" className="logo">
+            <img src="/zobot-logo-rosa2025.png" alt="Zobot.top" />
+          </Link>
           <nav className="nav-links">
             <Link to="/">Voltar ao Início</Link>
           </nav>
