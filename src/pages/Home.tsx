@@ -44,11 +44,16 @@ const Home: React.FC = () => {
         <section className="hero">
           <h1>Crie Agentes de IA Inteligentes, Conectados e Prontos para Atender no WhatsApp</h1>
           <div className="video-container">
-            {/* Substitua o src pelo vídeo real depois */}
-            <video width="640" height="360" controls poster="/vite.svg">
-              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-              Seu navegador não suporta vídeo.
-            </video>
+            <div style={{padding: "75% 0 0 0", position: "relative"}}>
+              <iframe
+                src="https://player.vimeo.com/video/1082361263?badge=0&autopause=0&player_id=0&app_id=58479"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}}
+                title="conecta botvance FINAL"
+              ></iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
           </div>
           <h2 className="subheadline">
             Configure, personalize e publique seu agente com controle total – da base de conhecimento ao agendamento automático
