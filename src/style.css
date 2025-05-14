@@ -60,17 +60,21 @@ main {
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 1.5rem;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+
+.logo img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-links {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -78,42 +82,41 @@ main {
   text-decoration: none;
   font-weight: 500;
   transition: var(--transition);
+  display: flex;
+  align-items: center;
+  height: 36px;
 }
 
 .nav-links a:hover {
   color: var(--color-accent);
 }
 
+.nav-login-btn {
+  background: var(--gradient-primary);
+  padding: 6px 16px;
+  border-radius: var(--border-radius-md);
+  color: white !important;
+  font-weight: 600;
+  margin-left: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.nav-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: white !important;
+}
+
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 60px 0 40px 0;
+  padding: 0 0 40px 0;
   position: relative;
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, rgba(114, 9, 183, 0.05) 50%, transparent 70%);
-  z-index: -1;
-  animation: pulse 15s infinite alternate;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-}
+/* Removido o fundo roxo quadrado da seção hero */
 
 .hero h1 {
   font-size: 2.8rem;
@@ -331,13 +334,14 @@ main {
 /* Pricing Section */
 .pricing {
   text-align: center;
-  padding: 60px 0;
+  padding: 60px 40px;
   background: var(--color-card-bg);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
-  margin: 40px 0;
+  margin: 40px auto;
   position: relative;
   overflow: hidden;
+  max-width: 600px; /* Tornando o card mais fino */
 }
 
 .pricing::before {
@@ -354,10 +358,13 @@ main {
 .pricing-content {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centralizando todos os elementos */
 }
 
 .pricing-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 16px;
   color: var(--color-light);
@@ -366,36 +373,43 @@ main {
 .pricing-subtitle {
   color: var(--color-gray);
   margin-bottom: 32px;
+  max-width: 400px; /* Limitando a largura para melhor leitura */
 }
 
 .price-tag {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 24px 0;
+  width: 100%;
 }
 
 .old-price {
   text-decoration: line-through;
   color: var(--color-gray);
   font-size: 1.5rem;
-  display: block;
   margin-bottom: 8px;
 }
 
 .new-price {
   color: var(--color-light);
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 800;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
 }
 
 .price-note {
-  display: block;
-  margin-top: 8px;
   color: var(--color-accent);
   font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.pricing .btn-primary {
+  min-width: 200px; /* Largura mínima para o botão */
 }
 
 /* FAQ Section */
@@ -575,10 +589,22 @@ footer a:hover {
   font-size: 0.9rem;
 }
 
+/* Menu Mobile */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2rem;
+    margin-top: 20px;
   }
   
   .subheadline {
@@ -613,11 +639,66 @@ footer a:hover {
   .page-header h1 {
     font-size: 2rem;
   }
+  
+  /* Ajustes para navegação em tablet */
+  .nav-links {
+    gap: 16px;
+  }
+  
+  .nav-login-btn {
+    margin-left: 4px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Menu mobile */
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .nav-container {
+    flex-wrap: wrap;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--color-dark);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    z-index: 100;
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    align-items: center;
+  }
+  
+  .nav-links.active {
+    max-height: 300px;
+    padding: 16px 0;
+  }
+  
+  .nav-links a {
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-login-btn {
+    margin: 8px 0 0 0;
+    width: 80%;
+  }
 }
 
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 1.6rem;
+    padding: 0 10px;
   }
   
   .section-title {
@@ -635,5 +716,30 @@ footer a:hover {
   
   .page-header h1 {
     font-size: 1.5rem;
+  }
+  
+  .feature-title {
+    font-size: 1.3rem;
+  }
+  
+  .feature-description {
+    font-size: 1rem;
+  }
+  
+  .step-title {
+    font-size: 1.3rem;
+  }
+  
+  .faq-question {
+    font-size: 1.2rem;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .pricing {
+    padding: 40px 20px;
   }
 }

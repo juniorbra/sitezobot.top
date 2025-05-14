@@ -16,12 +16,25 @@ const Home: React.FC = () => {
       {/* Header/Navigation */}
       <header className="header">
         <div className="nav-container">
-          <div className="logo">zobot.top</div>
+          <div className="logo">
+            <img src="/zobot-logo-rosa2025.png" alt="Zobot.top" />
+          </div>
+          <button 
+            className="mobile-menu-toggle" 
+            onClick={() => {
+              const navLinks = document.querySelector('.nav-links');
+              navLinks?.classList.toggle('active');
+            }}
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
           <nav className="nav-links">
-            <a href="#features">Funcionalidades</a>
-            <a href="#steps">Como Configurar</a>
-            <a href="#pricing">Preço</a>
-            <a href="#faq">FAQ</a>
+            <a href="#features" onClick={() => document.querySelector('.nav-links')?.classList.remove('active')}>Funcionalidades</a>
+            <a href="#steps" onClick={() => document.querySelector('.nav-links')?.classList.remove('active')}>Como Configurar</a>
+            <a href="#pricing" onClick={() => document.querySelector('.nav-links')?.classList.remove('active')}>Preço</a>
+            <a href="#faq" onClick={() => document.querySelector('.nav-links')?.classList.remove('active')}>FAQ</a>
+            <a href="https://meu.zobot.top/login" target="_blank" rel="noopener noreferrer" className="nav-login-btn">Login</a>
           </nav>
         </div>
       </header>
@@ -41,7 +54,7 @@ const Home: React.FC = () => {
             Configure, personalize e publique seu agente com controle total – da base de conhecimento ao agendamento automático
           </h2>
           <div style={{ marginTop: "32px" }}>
-            <a href="#pricing" className="btn btn-primary">Começar Agora</a>
+            <a href="https://meu.zobot.top/login" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Começar Agora</a>
           </div>
         </section>
 
@@ -175,7 +188,7 @@ const Home: React.FC = () => {
             <p style={{ fontSize: "1.2rem", fontWeight: "600", color: "var(--color-light)" }}>
               Pronto, o seu agente já está pronto para atender!
             </p>
-            <a href="#pricing" className="btn btn-primary" style={{ marginTop: "16px" }}>Começar Agora</a>
+            <a href="https://meu.zobot.top/login" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: "16px" }}>Começar Agora</a>
           </div>
         </section>
 
